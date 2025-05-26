@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
 
 //ruta principal
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'getHome']);
 
 //login y logout
 Route::get('/login', function () {
@@ -16,17 +17,10 @@ Route::get('/logout', function () {
 });
 
 //categorias
-Route::get('/category', function () {
-    return view('category.index');
-});
-Route::get('/category/show/{id}', function ($id) {
-    return view('category.show', ['id' => $id]);
-});
+Route::get('/category', [CategoryController::class, 'getIndex'] );
 
-Route::get('/category/create', function () {
-    return view('category.create');
-});
+Route::get('/category/show/{id}', [CategoryController::class, 'getShow'] );
 
-Route::get('/category/edit/{id}', function ($id) {
-    return view('category.edit', ['id' => $id]);
-});
+Route::get('/category/create', [CategoryController::class, 'getCreate'] );
+
+Route::get('/category/edit/{id}', [CategoryController::class, 'getEdit'] );
