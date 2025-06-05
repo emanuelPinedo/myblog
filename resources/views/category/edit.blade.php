@@ -1,12 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laravel 12 | Editar Posts</title>
-</head>
-<body>
-    <h1>Editar un post</h1>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('title', 'Editar Post')
+    
+@section('content')
+
+    <h1>Editar Post</h1>
+
+    <form action="{{ url('category/update/' . $post->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        
+        <label>Título:</label>
+        <input type="text" name="title" value="{{ $post->title }}"><br>
+
+        <label>Contenido:</label>
+        <textarea name="content">{{ $post->content }}</textarea><br>
+
+        <label>¿Habilitado?</label>
+        <input type="checkbox" name="habilitated" {{ $post->habilitated ? 'checked' : '' }}><br>
+
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+@endsection
