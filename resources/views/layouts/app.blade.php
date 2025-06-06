@@ -11,7 +11,7 @@
     @stack('css')
     <style>
         body {
-            background-color: rgb(52, 89, 138); /* Tailwind's gray-200 */
+            background-color: #18181b;
         }
     </style>
 </head>

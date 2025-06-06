@@ -3,12 +3,12 @@
 @section('title', 'Crear Post')
     
 @section('content')
-
-    <h1>Crear nuevo Post</h1>
+<div class="max-w-2xl mx-auto bg-gray-800 p-8 mt-6 rounded-lg shadow-md">
+    <h1 class="text-3xl font-bold text-white mb-6">Crear nuevo Post</h1>
 
     @if ($errors->any())
-        <div style="color:red;">
-            <ul>
+        <div class="bg-red-100 text-red-800 px-4 py-3 rounded mb-4">
+            <ul class="list-disc list-inside">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
@@ -16,22 +16,39 @@
         </div>
     @endif
 
-    <form action="{{ url('category/store') }}" method="POST">
+    <form action="{{ url('category/store') }}" method="POST" class="space-y-6">
         @csrf
 
-        <label for="title">Título:</label><br>
-        <input type="text" id="title" name="title" required><br><br>
+        <div>
+            <label for="title" class="block text-white font-semibold mb-1">Título</label>
+            <input type="text" id="title" name="title" required
+                class="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
 
-        {{--campo oculto q da el nombre del user logeado--}}
-        <input type="hidden" name="poster" value="{{ Auth::user()->name }}">
+        <div>
+            <label for="poster" class="block text-white font-semibold mb-1">URL de imagen</label>
+            <input type="url" id="poster" name="poster" required
+                class="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
 
-        <label for="content">Contenido:</label><br>
-        <textarea id="content" name="content" rows="5" required></textarea><br><br>
+        <div>
+            <label for="content" class="block text-white font-semibold mb-1">Contenido</label>
+            <textarea id="content" name="content" rows="5" required
+                class="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        </div>
 
-        <label for="habilitated">¿Habilitado?</label>
-        <input type="checkbox" id="habilitated" name="habilitated"><br><br>
+        <div class="flex items-center space-x-2">
+            <input type="checkbox" id="habilitated" name="habilitated"
+                class="rounded text-blue-600 focus:ring-blue-500">
+            <label for="habilitated" class="text-white">¿Habilitado?</label>
+        </div>
 
-        <button type="submit">Guardar</button>
+        <div class="text-right">
+            <button type="submit"
+                class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+                Guardar
+            </button>
+        </div>
     </form>
-
+</div>
 @endsection

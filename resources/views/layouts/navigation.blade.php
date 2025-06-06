@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        <img src="{{ asset('imgs/neddit.svg') }}" alt="Logo" class="h-20 w-auto">
                     </a>
                 </div>
 
@@ -26,14 +26,14 @@
 
                 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('post.index')">
+                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
                         {{ __('Categorias') }}
                     </x-nav-link>
                 </div>
 
                  @auth
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('category.create')" :active="request()->routeIs('post.create')">
+                        <x-nav-link :href="route('category.create')" :active="request()->routeIs('category.create')">
                             {{ __('Añadir Blog') }}
                         </x-nav-link>
                     </div>
@@ -84,7 +84,7 @@
 
                     <a href="{{ route('register') }}"
                     class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white"
-                    style="background-color: rgb(52, 89, 138);">
+                    style="background-color: rgb(219, 11, 11);">
                         Crear Cuenta
                     </a>
                 </div>
