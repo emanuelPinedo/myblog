@@ -12,6 +12,23 @@
         </div>
     @endif
 
+    @if (session('error'))
+        <div class="bg-red-100 text-red-800 px-4 py-2 rounded mb-4">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    {{--busqueda de psts--}}
+    <form method="GET" action="{{ url('category') }}" class="mb-6">
+        <input
+            type="text"
+            name="search"
+            value="{{ request('search') }}"
+            placeholder="Buscar posts..."
+            class="px-4 py-2 rounded w-full text-black"
+        />
+    </form>
+
     <div class="space-y-4">
         @foreach ($posts as $post)
             <div class="bg-gray-800 text-white rounded-lg p-4 shadow-md">

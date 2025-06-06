@@ -37,10 +37,22 @@
                     {{ $post->habilitated ? 'Sí' : 'No' }}
                 </span>
             </p>
-            <a href="{{ url('category/edit/' . $post->id) }}" 
-               class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                Editar
-            </a>
+
+            <div class="flex gap-2">
+                <a href="{{ url('category/edit/' . $post->id) }}" 
+                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                    Editar
+                </a>
+
+                <form action="{{ url('category/delete/' . $post->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que querés eliminar este post?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit"
+                            class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">
+                        Eliminar
+                    </button>
+                </form>
+            </div>
         </div>
     @endif
 
