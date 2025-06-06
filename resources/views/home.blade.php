@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Inicio')
+@section('title', 'Ñeddit - Home')
 
 @push('css')
     <style>

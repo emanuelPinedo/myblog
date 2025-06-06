@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Crear Post')
+@section('title', 'Ñeddit - Crear Post')
     
 @section('content')
 <div class="max-w-2xl mx-auto bg-gray-800 p-8 mt-6 rounded-lg shadow-md">

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommentController;
 
 //home
 Route::get('/', [HomeController::class, 'getHome'])->name('home');
@@ -30,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/category/edit/{id}', [CategoryController::class, 'getEdit'])->name('category.edit');
     Route::post('/category/update/{id}', [CategoryController::class, 'postUpdate'])->name('category.update');
     Route::post('/category/store', [CategoryController::class, 'postStore'])->name('category.store');
+
+    Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
 });
 
 require __DIR__.'/auth.php';

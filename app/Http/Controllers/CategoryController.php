@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function getIndex(){
-    $posts = Post::all(); // trae todos los posts de la base de datos
+    $posts = Post::paginate(3);
     return view('category.index', ['posts' => $posts]);
     }
 

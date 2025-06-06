@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Post $post->title")
+@section('title', "Ñeddit - Post $post->title")
     
 @section('content')
 <div class="max-w-3xl mx-auto bg-gray-800 shadow-md rounded-xl p-6 mt-6 space-y-6">
@@ -24,8 +24,9 @@
         @endif
     @endif
 
-    <div>
-        <p class="text-white"><span class="font-semibold">Contenido:</span> {{ $post->content }}</p>
+    <div class="text-white whitespace-pre-line">
+        <p class="font-semibold">Contenido:</p>
+        {{ $post->content }}
     </div>
 
     @if ($post->user_id === auth()->id())
@@ -42,6 +43,33 @@
             </a>
         </div>
     @endif
+
+    {{--formulario para comentar si estan logeados (meido al pedo la verificacion pq tienen q estar logeados para entrar acá xd)--}}
+    @auth
+        <form action="{{ route('comments.store', $post->id) }}" method="POST" class="mt-4">
+            @csrf
+            <textarea name="content" rows="3" class="w-full p-2 rounded" placeholder="Escribí tu comentario aquí..." required></textarea>
+            <button type="submit" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                Comentar
+            </button>
+        </form>
+        @else
+        <p class="mt-4 text-gray-400">Para comentar, <a href="{{ route('login') }}" class="underline">iniciá sesión</a>.</p>
+    @endauth
+
+    <div class="mt-8 bg-gray-700 p-4 rounded-lg">
+        <h2 class="text-xl font-bold text-white mb-4">Comentarios</h2>
+
+        @foreach($post->comments as $comment)
+            <div class="mb-4 border-b border-gray-600 pb-2">
+                <p class="text-white"><strong>{{ $comment->user->name ?? 'Anónimo' }}:</strong></p>
+                <p class="text-gray-300">{{ $comment->content }}</p>
+                {{--craeted_at es una instancia de carbon para manejar horas y fechas --}}
+                <p class="text-xs text-gray-500">{{ $comment->created_at->diffForHumans() }}</p>
+            </div>
+        @endforeach
+    </div>
+
 
 </div>
 @endsection
