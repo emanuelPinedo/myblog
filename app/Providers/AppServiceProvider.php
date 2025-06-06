@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        //para cambiar d pagina
         Paginator::useTailwind();
         //pasar el tiempo del comentario a español
         Carbon::setLocale('es');
