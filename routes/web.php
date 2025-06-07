@@ -15,10 +15,9 @@ Route::get('/category/show/{id}', [CategoryController::class, 'getShow'])->name(
 //protegido x login
 Route::middleware('auth')->group(function () {
 
-    /*dashboard
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');*/
+    //dashboard
+    Route::get('/dashboard', [CategoryController::class, 'getUserPosts'])->name('dashboard');
+    Route::post('/category/update-habilitated/{id}', [CategoryController::class, 'updateHabilitated']);
 
     //perfil
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

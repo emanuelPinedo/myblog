@@ -36,6 +36,8 @@
                     {{ $post->title }}
                 </a>
 
+                <p class="text-sm text-gray-300 mb-2">{{ $post->created_at->diffForHumans() }}</p>
+
                 @if ($post->poster)
                     @php
                         $poster = $post->poster;

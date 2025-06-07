@@ -37,6 +37,12 @@
                 class="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
         </div>
 
+        <div class="flex items-center space-x-2">
+            <input type="checkbox" id="habilitated" name="habilitated"
+                class="rounded text-blue-600 focus:ring-blue-500">
+            <label for="habilitated" class="text-white">¿Habilitado?</label>
+        </div>
+
         <div class="text-right">
             <button type="submit"
                 class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">

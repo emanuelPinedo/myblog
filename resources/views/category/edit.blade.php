@@ -49,6 +49,15 @@
                 class="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">{{ old('content', $post->content) }}</textarea>
         </div>
 
+        <div>
+            <label class="inline-flex items-center">
+                <input type="checkbox" name="habilitated" value="1"
+                    class="form-checkbox text-blue-600"
+                    {{ $post->habilitated ? 'checked' : '' }}>
+                <span class="ml-2 text-white">Habilitar post</span>
+            </label>
+        </div>
+
         <div class="text-right">
             <button type="submit"
                 class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">

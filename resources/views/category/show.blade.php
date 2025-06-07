@@ -7,6 +7,8 @@
 
     <h1 class="text-3xl font-bold text-white">{{ $post->title }}</h1>
 
+    <p class="text-sm text-gray-300 mb-2">{{ $post->created_at->diffForHumans() }}</p>
+
     <p class="text-white">
         <span class="font-semibold text-white">Autor:</span> {{ $post->user->name ?? 'Anónimo' }}
     </p>
@@ -31,6 +33,12 @@
 
     @if ($post->user_id === auth()->id())
         <div class="flex items-center justify-between mt-6">
+            <p class="text-white">
+                <span class="font-semibold">¿Habilitado?:</span> 
+                <span class="{{ $post->habilitated ? 'text-green-600' : 'text-red-600' }}">
+                    {{ $post->habilitated ? 'Sí' : 'No' }}
+                </span>
+            </p>
 
             <div class="flex gap-2">
                 <a href="{{ url('category/edit/' . $post->id) }}" 

@@ -22,16 +22,16 @@ class CategoryController extends Controller
             });
         }
 
-        /*mostrar los posts habiliotados o loos del user logeado
-        $query->where(function ($q) {
-            $q->where('habilitated', true);
-            
-            //user logeado, mostarle sus posts no habilitados
-            if (Auth::check()) {
-                $q->orWhere('user_id', Auth::id());
-            }
-        });*/
-
+        //mostrar los posts habiliotados o loos del user logeado
+        if (Auth::check()) {
+            $query->where(function ($q) {
+                $q->where('habilitated', true)
+                    ->orWhere('user_id', Auth::id());
+            });
+        } else {
+            $query->where('habilitated', true);
+        }
+    
         $posts = $query->paginate(3);
 
         return view('category.index', ['posts' => $posts]);
@@ -40,10 +40,10 @@ class CategoryController extends Controller
     public function getShow($id){
         $post = Post::findOrFail($id);
 
-        /*post no habilitado y este user no lo subió
+        //post no habilitado y este user no lo subió
         if (!$post->habilitated && $post->user_id !== Auth::id()) {
             abort(403, 'Volá de acá flaco, no podes ver esto');
-        }*/
+        }
 
         return view('category.show', ['post' => $post]);
     }
@@ -62,7 +62,7 @@ class CategoryController extends Controller
         $post->title = $request->input('title');
         $post->poster = $request->input('poster');
         $post->content = $request->input('content');
-        $post->habilitated = true;
+        $post->habilitated = false; //por defecto, deshabilitado
         $post->user_id = Auth::id();
 
         $post->save();
@@ -87,11 +87,31 @@ class CategoryController extends Controller
         $post->title = $request->input('title');
         $post->poster = $request->input('poster');
         $post->content = $request->input('content');
-        $post->habilitated = true;
+        $post->habilitated = $request->has('habilitated');
 
         $post->save();
 
         return redirect('category')->with('success', 'Post actualizado correctamente.');
+    }
+
+    public function getUserPosts(){
+        $user = Auth::user();
+        $posts = Post::where('user_id', $user->id)->latest()->get();
+
+        return view('dashboard', ['posts' => $posts]);
+    }
+
+    public function updateHabilitated(Request $request, $id){
+        $post = Post::findOrFail($id);
+
+        if ($post->user_id !== Auth::id()) {
+            abort(403, 'No autorizado.');
+        }
+
+        $post->habilitated = $request->has('habilitated');
+        $post->save();
+
+        return redirect()->route('dashboard')->with('success', 'Post actualizado');
     }
 
     public function destroy($id){
