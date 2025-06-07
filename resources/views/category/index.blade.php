@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Ñeddit - Categorías')
-    
+
 @section('content')
 <div class="max-w-6xl mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold mb-6 text-white">Todos los Posts!!!</h1>
@@ -18,7 +18,7 @@
         </div>
     @endif
 
-    {{--busqueda de psts--}}
+    {{--busqueda de psts --}}
     <form method="GET" action="{{ url('category') }}" class="mb-6">
         <input
             type="text"
@@ -30,7 +30,7 @@
     </form>
 
     <div class="space-y-4">
-        @foreach ($posts as $post)
+        @forelse ($posts as $post)
             <div class="bg-gray-800 text-white rounded-lg p-4 shadow-md">
                 <a href="{{ url('category/show/' . $post->id) }}" class="text-lg font-semibold hover:underline">
                     {{ $post->title }}
@@ -53,11 +53,22 @@
 
                 <p class="text-gray-400 text-sm mt-2">Publicado por: {{ $post->user->name ?? 'Anónimo' }}</p>
             </div>
-        @endforeach
-        <div class="mt-6">
-            {{ $posts->links() }}
-        </div>
+        @empty
+            <div class="bg-gray-800 text-white rounded-lg p-4 shadow-md mb-6 text-center">
+                @if (request('search'))
+                    No se encontraron resultados para: <strong>"{{ request('search') }}"</strong>
+                @else
+                    No hay posts disponibles.
+                @endif
+            </div>
+        @endforelse
 
+        {{-- Paginación --}}
+        @if ($posts->hasPages())
+            <div class="mt-6">
+                {{ $posts->links() }}
+            </div>
+        @endif
     </div>
 </div>
 @endsection

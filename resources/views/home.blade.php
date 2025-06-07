@@ -23,7 +23,7 @@
 
         {{--ver ultimos 3 posts subidos--}}
         <div class="space-y-4">
-            @foreach ($posts as $post)
+            @forelse ($posts as $post)
                 <div class="bg-gray-800 text-white rounded-lg p-4 shadow-md">
                     <a href="{{ url('category/show/' . $post->id) }}" class="text-lg font-semibold hover:underline">
                         {{ $post->title }}
@@ -46,7 +46,11 @@
 
                     <p class="text-gray-400 text-sm mt-2">Publicado por: {{ $post->user->name ?? 'Anónimo' }}</p>
                 </div>
-            @endforeach
+            @empty
+                <div class="bg-gray-700 text-white rounded-lg p-4 shadow-md mb-6 text-center">
+                    No hay posts disponibles.
+                </div>
+            @endforelse
         </div>
     </div>
 @endsection
