@@ -25,18 +25,12 @@
     @endif
 
     <div class="text-white whitespace-pre-line">
-        <p class="font-semibold">Contenido:</p>
+        <p class="font-semibold"></p>
         {{ $post->content }}
     </div>
 
     @if ($post->user_id === auth()->id())
         <div class="flex items-center justify-between mt-6">
-            <p class="text-white">
-                <span class="font-semibold">¿Habilitado?:</span> 
-                <span class="{{ $post->habilitated ? 'text-green-600' : 'text-red-600' }}">
-                    {{ $post->habilitated ? 'Sí' : 'No' }}
-                </span>
-            </p>
 
             <div class="flex gap-2">
                 <a href="{{ url('category/edit/' . $post->id) }}" 
@@ -66,7 +60,7 @@
             </button>
         </form>
         @else
-        <p class="mt-4 text-gray-400">Para comentar, <a href="{{ route('login') }}" class="underline">iniciá sesión</a>.</p>
+        <p class="mt-4 text-gray-400">Para comentar, <a href="{{ route('login') }}" class="underline">Iniciá Sesión</a>.</p>
     @endauth
 
     <div class="mt-8 bg-gray-700 p-4 rounded-lg">

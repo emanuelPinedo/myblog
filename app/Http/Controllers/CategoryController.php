@@ -22,7 +22,7 @@ class CategoryController extends Controller
             });
         }
 
-        //mostrar los posts habiliotados o loos del user logeado
+        /*mostrar los posts habiliotados o loos del user logeado
         $query->where(function ($q) {
             $q->where('habilitated', true);
             
@@ -30,7 +30,7 @@ class CategoryController extends Controller
             if (Auth::check()) {
                 $q->orWhere('user_id', Auth::id());
             }
-        });
+        });*/
 
         $posts = $query->paginate(3);
 
@@ -39,6 +39,12 @@ class CategoryController extends Controller
 
     public function getShow($id){
         $post = Post::findOrFail($id);
+
+        /*post no habilitado y este user no lo subió
+        if (!$post->habilitated && $post->user_id !== Auth::id()) {
+            abort(403, 'Volá de acá flaco, no podes ver esto');
+        }*/
+
         return view('category.show', ['post' => $post]);
     }
 
@@ -56,7 +62,7 @@ class CategoryController extends Controller
         $post->title = $request->input('title');
         $post->poster = $request->input('poster');
         $post->content = $request->input('content');
-        $post->habilitated = $request->has('habilitated');//true si se marca el checkbox
+        $post->habilitated = true;
         $post->user_id = Auth::id();
 
         $post->save();
@@ -81,7 +87,7 @@ class CategoryController extends Controller
         $post->title = $request->input('title');
         $post->poster = $request->input('poster');
         $post->content = $request->input('content');
-        $post->habilitated = $request->has('habilitated');
+        $post->habilitated = true;
 
         $post->save();
 

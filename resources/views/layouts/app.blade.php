@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="{{ asset('imgs/neddit iii.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('imgs/nedditlogo.png') }}" type="image/x-icon">
     <title>@yield('title', 'Ñeddit')</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
