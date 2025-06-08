@@ -6,6 +6,7 @@
 <div class="max-w-2xl mx-auto bg-gray-800 p-8 mt-6 rounded-lg shadow-md">
     <h1 class="text-3xl font-bold text-white mb-6">Editar Post</h1>
 
+    {{----}}
     @if ($errors->any())
         <div class="bg-red-100 text-red-800 px-4 py-3 rounded mb-4">
             <ul class="list-disc list-inside">

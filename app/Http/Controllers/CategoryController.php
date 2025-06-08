@@ -52,9 +52,15 @@ class CategoryController extends Controller
         //validacion
         $request->validate([
             'title' => 'required|string|max:255',
-            'poster' => 'required|url',
-
+            'poster' => [
+                'required',
+                'url',
+                'regex:/\.(jpg|jpeg|png|gif|webp)(\?.*)?$/i'
+            ],
             'content' => 'required|string',
+        ], [
+            // Mensaje de error personalizado para el campo poster
+            'poster.regex' => 'La URL debe ser una imagen válida (.jpg, .jpeg, .png, .gif o .webp).',
         ]);
 
         //craer post

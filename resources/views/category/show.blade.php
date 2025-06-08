@@ -58,7 +58,7 @@
         </div>
     @endif
 
-    {{--formulario para comentar si estan logeados (meido al pedo la verificacion pq tienen q estar logeados para entrar acá xd)--}}
+    {{--formulario para comentar si estan logeados)--}}
     @auth
         <form action="{{ route('comments.store', $post->id) }}" method="POST" class="mt-4">
             @csrf
