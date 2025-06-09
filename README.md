@@ -15,7 +15,7 @@ $alumno = [
 
 # Ñeddit, Blog con Laravel, XAMPP y Tailwind
 
-Este es un proyecto de blog un desarrollado con **Laravel**, utilizando **XAMPP (Apache y MySQL) como ejecución. Permite a los usuarios autenticados crear, editar, eliminar y ver publicaciones, así como agregar comentarios.
+Este es un proyecto de blog un desarrollado con **Laravel**, utilizando **XAMPP (Apache y MySQL)** como ejecución. Permite a los usuarios autenticados crear, editar, eliminar y ver publicaciones, así como agregar comentarios.
 
 <hr>
 
