@@ -14,24 +14,26 @@ class CategoryController extends Controller
         $query = Post::query();
 
         //filtrar posts
-        if ($request->filled('search')) {
-            $search = $request->input('search');
-            $query->where(function ($q) use ($search) {
-                $q->where('title', 'like', "%{$search}%")
-                ->orWhere('content', 'like', "%{$search}%");
+        if ($request->filled('search')) {//verificar q no este vacio
+            $search = $request->input('search');//guardar busqueda
+            $query->where(function ($q) use ($search) {//buscar coincidencias
+                $q->where('title', 'like', "%{$search}%")//buscar por titulo
+                ->orWhere('content', 'like', "%{$search}%");//buscar por contenido
             });
         }
 
-        //mostrar los posts habiliotados o loos del user logeado
+        //mostrar los posts habiliotados o los creados por user logeado
         if (Auth::check()) {
             $query->where(function ($q) {
                 $q->where('habilitated', true)
                     ->orWhere('user_id', Auth::id());
             });
+            //no esta logeado, mostrar los habilitados en gral
         } else {
             $query->where('habilitated', true);
         }
     
+        //mostrar los ultimos 3 posts subidos
         $posts = $query->paginate(3);
 
         return view('category.index', ['posts' => $posts]);
@@ -59,7 +61,7 @@ class CategoryController extends Controller
             ],
             'content' => 'required|string',
         ], [
-            // Mensaje de error personalizado para el campo poster
+            //mensaje de error personalizado para el campo poster
             'poster.regex' => 'La URL debe ser una imagen válida (.jpg, .jpeg, .png, .gif o .webp).',
         ]);
 
@@ -68,7 +70,7 @@ class CategoryController extends Controller
         $post->title = $request->input('title');
         $post->poster = $request->input('poster');
         $post->content = $request->input('content');
-        $post->habilitated = false; //por defecto, deshabilitado
+        $post->habilitated = $request->has('habilitated');
         $post->user_id = Auth::id();
 
         $post->save();
