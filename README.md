@@ -33,10 +33,10 @@ Este es un proyecto de blog un desarrollado con **Laravel**, utilizando **XAMPP 
 ## ⚙️ Instalación
 
 1. Clonar el repositorio:
-    ```bash
+```bash
     git clone https://github.com/emanuelPinedo/myblog.git
     cd myblog
-    ```
+ ```
 
 2. Instalar dependencias:
 ```bash
