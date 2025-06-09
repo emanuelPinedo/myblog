@@ -20,31 +20,31 @@ Este es un proyecto de blog un desarrollado con **Laravel**, utilizando **XAMPP 
 <hr>
 
 ## Tecnologías Utilizadas
-✅**Laravel 12** → Framework PHP para estructurar el proyecto en MVC
-✅**XAMPP (Apache y MySQL)** → Servidor local y base de datos
-✅**Blade** → Motor de plantillas de laravel
-✅**Laravel Breeze** → Sistema de autenticación
-✅**Tailwind CSS** → Para estilos
-✅**Validación de formularios** → con `@csrf`, validaciones en el backend y mensajes de error
-✅**Control de acceso** → para que solo usuarios autenticados puedan crear/editar/comentar
+- ✅**Laravel 12** → Framework PHP para estructurar el proyecto en MVC
+- ✅**XAMPP (Apache y MySQL)** → Servidor local y base de datos
+- ✅**Blade** → Motor de plantillas de laravel
+- ✅**Laravel Breeze** → Sistema de autenticación
+- ✅**Tailwind CSS** → Para estilos
+- ✅**Validación de formularios** → con `@csrf`, validaciones en el backend y mensajes de error
+- ✅**Control de acceso** → para que solo usuarios autenticados puedan crear/editar/comentar
 
 <hr>
 
 ## ⚙️ Instalación
 
-1. Clonar el repositorio:
+### 1️⃣ Clonar el repositorio:
 ```bash
     git clone https://github.com/emanuelPinedo/myblog.git
     cd myblog
  ```
 
-2. Instalar dependencias:
+### 2️⃣ Instalar dependencias:
 ```bash
     composer install
     npm install 
 ```
 
-3. Configurar archivo .env
+### 3️⃣ Configurar archivo .env
 ```.env
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
@@ -54,26 +54,26 @@ Este es un proyecto de blog un desarrollado con **Laravel**, utilizando **XAMPP 
     DB_PASSWORD=
 ```
 
-4. Instalar y configurar Laravel Breeze
+### 4️⃣ Instalar y configurar Laravel Breeze
 ```bash
     composer require laravel/breeze --dev
     php artisan breeze:install
     npm run dev
     php artisan migrate
 ```
-5. Correr servidor
+### 5️⃣ Correr servidor
 ```bash
     php artisan serve
 ```
 
 
 ## 📝 Funcionalidades
-🔹 Registro e inicio de sesión
-🔹 Crear, ver, editar y eliminar posts
-🔹 Agregar comentarios a los posts
-🔹 Ver imagen del post
-🔹 Vista y edición de publicaciones propias
-🔹 Diseño responsive con Tailwind CSS
+- 🔹 Registro e inicio de sesión
+- 🔹 Crear, ver, editar y eliminar posts
+- 🔹 Agregar comentarios a los posts
+- 🔹 Ver imagen del post
+- 🔹 Vista y edición de publicaciones propias
+- 🔹 Diseño responsive con Tailwind CSS
 
 ## 📸 Imagenes del Proyecto
 
