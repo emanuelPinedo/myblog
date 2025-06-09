@@ -34,36 +34,36 @@ Este es un proyecto de blog un desarrollado con **Laravel**, utilizando **XAMPP 
 
 ### 1️⃣ Clonar el repositorio:
 ```bash
-    git clone https://github.com/emanuelPinedo/myblog.git
-    cd myblog
+git clone https://github.com/emanuelPinedo/myblog.git
+cd myblog
  ```
 
 ### 2️⃣ Instalar dependencias:
 ```bash
-    composer install
-    npm install 
+composer install
+npm install 
 ```
 
 ### 3️⃣ Configurar archivo .env
 ```.env
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=nombre_base_datos
-    DB_USERNAME=root
-    DB_PASSWORD=
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nombre_base_datos
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
 ### 4️⃣ Instalar y configurar Laravel Breeze
 ```bash
-    composer require laravel/breeze --dev
-    php artisan breeze:install
-    npm run dev
-    php artisan migrate
+composer require laravel/breeze --dev
+php artisan breeze:install
+npm run dev
+php artisan migrate
 ```
 ### 5️⃣ Correr servidor
 ```bash
-    php artisan serve
+php artisan serve
 ```
 
 
