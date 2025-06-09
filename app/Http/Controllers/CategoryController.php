@@ -61,7 +61,7 @@ class CategoryController extends Controller
             ],
             'content' => 'required|string',
         ], [
-            //mensaje de error personalizado para el campo poster
+            //mensaje de error
             'poster.regex' => 'La URL debe ser una imagen válida (.jpg, .jpeg, .png, .gif o .webp).',
         ]);
 
